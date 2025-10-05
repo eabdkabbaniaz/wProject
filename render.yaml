@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: laravel-app
+    env: docker
+    repo: https://github.com/YOUR-USER/YOUR-REPO
+    branch: main
+databases:
+  - name: laravel-db
+    plan: free
