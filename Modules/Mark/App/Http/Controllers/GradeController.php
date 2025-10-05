@@ -75,7 +75,7 @@ class GradeController extends Controller
     public function export(Request $request)
     {
         $columns = $request->input('columns');
-
+return  $request;
         return Excel::download(new GradesExport($columns), 'grades.xlsx');
     }
 }
