@@ -23,7 +23,6 @@ RUN chown -R www-data:www-data /var/www/html \
 
 # تثبيت الحزم
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-RUN php artisan migrate:f --seed
 
 # فتح البورت
 EXPOSE 8080
