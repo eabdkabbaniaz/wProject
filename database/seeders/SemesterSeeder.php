@@ -35,6 +35,7 @@ class SemesterSeeder extends Seeder
         DB::table('experineces_semesters')->insert([
             ['experience_id' => $intestine1->id, 'semester_id' => $semester1->id],
             ['experience_id' => $intestine2->id, 'semester_id' => $semester1->id],
+            ['experience_id' => $frogHeart->id, 'semester_id' => $semester1->id],
             ['experience_id' => $intestine1->id, 'semester_id' => $semester2->id],
             ['experience_id' => $frogHeart->id, 'semester_id' => $semester2->id],
         ]);
@@ -54,45 +55,83 @@ $drugsintestine1=[$Magnesium ,$acetylcholine,   $Alpha_Beta_blocker , $adrenalin
 $drugsintestine2=[$Magnesium ,$acetylcholine,   $Alpha_Beta_blocker , $adrenaline, $atropine,$barium ] ;
 $drugsfrogHeart=[$acetylcholine, $adrenaline, $atropine ,$NorAdrenaline ,  $Alpha_Beta_blocker,$Magnesium ]  ;
         // Link Drugs to Experiences
-        foreach ($drugsintestine1 as $drug) {
-            DB::table('experience_drugs')->insert([
-                'drug_id' => $drug->id,
-                'experience_id' => $intestine1->id,
-                'effect' => true,
-            ]);
-        }
-        foreach ($drugsintestine2 as $drug) {
-            DB::table('experience_drugs')->insert([
-                'drug_id' => $drug->id,
-                'experience_id' => $intestine2->id,
-                'effect' => true,
-            ]);
-        }
+        // foreach ($drugsintestine1 as $drug) {
+        //     DB::table('experience_drugs')->insert([
+        //         'drug_id' => $drug->id,
+        //         'experience_id' => $intestine1->id,
+        //         'effect' => true,
+        //     ]);
+        // }
 
-        foreach ($drugsfrogHeart as $drug) {
-            DB::table('experience_drugs')->insert([
-                'drug_id' => $drug->id,
-                'experience_id' => $frogHeart->id,
-                'effect' => true,
-            ]);
-        }
-        for ($i = 1; $i <= 5; $i++) {
-            $user = User::create([
-                'name' => "الاستاذ  $i",
-                'email' => "teacher$i@gmail.com",
-                'password' => Hash::make('password'),
-            ]);
+DB::table('experience_drugs')->insert([
+    ['drug_id' => $Magnesium->id, 'experience_id' => $intestine1->id, 'effect' => false],
+    ['drug_id' => $acetylcholine->id, 'experience_id' => $intestine1->id, 'effect' => true],
+    ['drug_id' => $Alpha_Beta_blocker->id, 'experience_id' => $intestine1->id, 'effect' => true],
+    ['drug_id' => $adrenaline->id, 'experience_id' => $intestine1->id, 'effect' => false],
+    ['drug_id' => $atropine->id, 'experience_id' => $intestine1->id, 'effect' => false],
+    ['drug_id' => $NorAdrenaline->id, 'experience_id' => $intestine1->id, 'effect' => false],
+    ['drug_id' => $Carbachol->id, 'experience_id' => $intestine1->id, 'effect' => true],
+    ['drug_id' => $Pilocarpine->id, 'experience_id' => $intestine1->id, 'effect' => true],
+]);
 
-            $user->assignRole('teacher');
-        }
+
+DB::table('experience_drugs')->insert([
+    ['drug_id' => $Magnesium->id, 'experience_id' => $intestine2->id, 'effect' => false],
+    ['drug_id' => $acetylcholine->id, 'experience_id' => $intestine2->id, 'effect' => true],
+    ['drug_id' => $Alpha_Beta_blocker->id, 'experience_id' => $intestine2->id, 'effect' => true],
+    ['drug_id' => $adrenaline->id, 'experience_id' => $intestine2->id, 'effect' => false],
+    ['drug_id' => $atropine->id, 'experience_id' => $intestine2->id, 'effect' => false],
+    ['drug_id' => $barium->id, 'experience_id' => $intestine2->id, 'effect' => true],
+]);
+
+$drugsfrogHeart = [
+    ['drug' => $acetylcholine, 'effect' => false],
+    ['drug' => $adrenaline, 'effect' => true],
+    ['drug' => $atropine, 'effect' => true],
+    ['drug' => $NorAdrenaline, 'effect' => true],
+    ['drug' => $Alpha_Beta_blocker, 'effect' => false],
+    ['drug' => $Magnesium, 'effect' => false],
+];
+
+foreach ($drugsfrogHeart as $item) {
+    DB::table('experience_drugs')->insert([
+        'drug_id' => $item['drug']->id,
+        'experience_id' => $frogHeart->id,
+        'effect' => $item['effect'],
+    ]);
+}
+        // foreach ($drugsintestine2 as $drug) {
+        //     DB::table('experience_drugs')->insert([
+        //         'drug_id' => $drug->id,
+        //         'experience_id' => $intestine2->id,
+        //         'effect' => true,
+        //     ]);
+        // }
+
+        // foreach ($drugsfrogHeart as $drug) {
+        //     DB::table('experience_drugs')->insert([
+        //         'drug_id' => $drug->id,
+        //         'experience_id' => $frogHeart->id,
+        //         'effect' => true,
+        //     ]);
+        // }
+        // for ($i = 1; $i <= 5; $i++) {
+        //     $user = User::create([
+        //         'name' => "الاستاذ  $i",
+        //         'email' => "teacher$i@gmail.com",
+        //         'password' => Hash::make('password'),
+        //     ]);
+
+        //     $user->assignRole('teacher');
+        // }
         // Create 3 Sessions for frogHeart in semester 1
         $expSem = DB::table('experineces_semesters')
             ->where('experience_id', $frogHeart->id)
-            ->where('semester_id', $semester2->id)
+            ->where('semester_id', $semester1->id)
             ->first();
 
         // You might want to change teacher_id to an actual existing user id
-        $teacherId = 1;
+        $teacherId = 5;
 
         $session1 = Session::create([
             'name' => 'جلسة أستيل كولين',
