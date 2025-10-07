@@ -22,13 +22,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
       
-        $this->call([
-            RolePermissionSeeder::class
-        ]);
+        // $this->call([
+        //     RolePermissionSeeder::class
+        // ]);
 
-        $this->call([
-            StudentSeeder::class,
-        ]);
+        // $this->call([
+        //     StudentSeeder::class,
+        // ]);
         $this->call([
             SettingsTableSeeder::class,
         ]);
@@ -51,9 +51,9 @@ class DatabaseSeeder extends Seeder
             // $this->call([
             //     StudentSeeder::class,
             // ]);
-            $this->call([
-               SemesterSeeder::class,
-            ]);
+            // $this->call([
+            //    SemesterSeeder::class,
+            // ]);
             // $this->call([
             //    SettingsTableSeeder::class,
             // ]);
