@@ -95,6 +95,7 @@ Route::group(['middleware' => ['auth:sanctum', 'role:student']], function () {
 
 Route::group(['prefix' => 'semester', 'middleware' => ['auth:sanctum', 'role:superVisorTeacher|manger']], function () {
     Route::post('/store', [SemesterController::class, 'store']);
+    Route::get('/index', [SemesterController::class, 'index']);
     Route::put('/update/{id}', [SemesterController::class, 'update']);
     Route::delete('/destroy/{id}', [SemesterController::class, 'destroy']);
 });
