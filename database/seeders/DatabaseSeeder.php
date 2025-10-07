@@ -3,8 +3,15 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
+use Illuminate\Support\Facades\DB;
+use Modules\Experience\App\Models\Drug;
+use Modules\Experience\App\Models\Experience;
+use Modules\Experience\App\Models\Semester;
+use Modules\Experience\App\Models\Session;
+use Modules\Student\App\Models\Category;
+use Modules\Student\App\Models\Student;
 use App\Models\User;
+use Modules\Student\App\Models\Teacher;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
