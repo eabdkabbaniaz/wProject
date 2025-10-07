@@ -51,17 +51,6 @@ class SemesterSeeder extends Seeder
         $Carbachol = Drug::create(['name' => 'Carbachol']);
         $Pilocarpine = Drug::create(['name' => 'Pilocarpine']);
         $barium = Drug::create(['name' => 'barium']);
-$drugsintestine1=[$Magnesium ,$acetylcholine,   $Alpha_Beta_blocker , $adrenaline, $atropine ,$NorAdrenaline ,$Carbachol, $Pilocarpine]  ;
-$drugsintestine2=[$Magnesium ,$acetylcholine,   $Alpha_Beta_blocker , $adrenaline, $atropine,$barium ] ;
-$drugsfrogHeart=[$acetylcholine, $adrenaline, $atropine ,$NorAdrenaline ,  $Alpha_Beta_blocker,$Magnesium ]  ;
-        // Link Drugs to Experiences
-        // foreach ($drugsintestine1 as $drug) {
-        //     DB::table('experience_drugs')->insert([
-        //         'drug_id' => $drug->id,
-        //         'experience_id' => $intestine1->id,
-        //         'effect' => true,
-        //     ]);
-        // }
 
 DB::table('experience_drugs')->insert([
     ['drug_id' => $Magnesium->id, 'experience_id' => $intestine1->id, 'effect' => false],
@@ -100,30 +89,7 @@ foreach ($drugsfrogHeart as $item) {
         'effect' => $item['effect'],
     ]);
 }
-        // foreach ($drugsintestine2 as $drug) {
-        //     DB::table('experience_drugs')->insert([
-        //         'drug_id' => $drug->id,
-        //         'experience_id' => $intestine2->id,
-        //         'effect' => true,
-        //     ]);
-        // }
 
-        // foreach ($drugsfrogHeart as $drug) {
-        //     DB::table('experience_drugs')->insert([
-        //         'drug_id' => $drug->id,
-        //         'experience_id' => $frogHeart->id,
-        //         'effect' => true,
-        //     ]);
-        // }
-        // for ($i = 1; $i <= 5; $i++) {
-        //     $user = User::create([
-        //         'name' => "الاستاذ  $i",
-        //         'email' => "teacher$i@gmail.com",
-        //         'password' => Hash::make('password'),
-        //     ]);
-
-        //     $user->assignRole('teacher');
-        // }
         // Create 3 Sessions for frogHeart in semester 1
         $expSem = DB::table('experineces_semesters')
             ->where('experience_id', $frogHeart->id)
