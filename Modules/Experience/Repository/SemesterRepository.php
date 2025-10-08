@@ -7,7 +7,16 @@ class SemesterRepository
 {
     public function all()
     {
-        return Semester::all();
+    $semester=Semester::all();
+    foreach( $semester as $sem){
+        if($sem->status==true){
+            $sem->status=1;
+        }
+        else{
+            $sem->status=0;
+        }
+    }
+    return     $semester;
     }
 
     public function find($id): ?Semester
