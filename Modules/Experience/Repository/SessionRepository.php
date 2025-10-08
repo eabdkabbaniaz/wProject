@@ -85,7 +85,16 @@ return $session;
         }
         public function getSessions()
         {
-            return Session::with('drugs')->get();
+            $session= Session::with('drugs')->get();
+    foreach( $session as $sem){
+        if($sem->experience_id->status==true){
+          $sem->experience_id->status=1;
+        }
+        else{
+            $sem->experience_id->status=0;
+        }
+    }
+    return     $session;   
         }
         public function AllExperience($data)
         {
