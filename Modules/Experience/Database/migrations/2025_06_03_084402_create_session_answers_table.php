@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('session_answers', function (Blueprint $table) {
             $table->id();
             $table->string('Answer');
-            $table->int('is_correct');
+            $table->integer('is_correct');
             $table->foreignId('session_question_id')->constrained('session_questions')->onDelete('cascade');
             $table->timestamps();
         });

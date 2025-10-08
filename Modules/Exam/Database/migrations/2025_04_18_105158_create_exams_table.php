@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double('time');
             $table-> date('Start_date');
             $table->date('End_date');
-            $table->boolean('status')->default(false);
+            $table->integer('status')->default(false);
             // $table->foreignId( 'subject_id')->constrained('subjects');
             $table->foreignId( 'teacher_id')->constrained('users');
             $table->timestamps();
