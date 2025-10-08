@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('drug_id')->constrained('drugs')->onDelete('cascade');
             $table->foreignId('experience_id')->constrained('experiences')->onDelete('cascade');
-            $table->int('effect');
+            $table->boolean('effect');
 
             $table->timestamps();
         });
