@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user5->id,
             'is_active' => 1
         ]);
-        $user5->assignRole('supervisorTeacher');
+        $user5->assignRole('superVisorTeacher');
 
         // Semesters
         $semester1 = Semester::create(['name' => 'First Semester']);
