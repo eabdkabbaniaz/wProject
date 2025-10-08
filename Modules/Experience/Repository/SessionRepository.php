@@ -86,15 +86,6 @@ return $session;
         public function getSessions()
         {
             $session= Session::with('drugs')->get();
-    foreach( $session as $sem){
-        if($sem['experience_id']['status']==true){
-            echo 1;
-          $sem['experience_id']['status']=1;
-        }
-        else{
-            $sem['experience_id']['status']=0;
-        }
-    }
     return     $session;   
         }
         public function AllExperience($data)
@@ -104,14 +95,6 @@ return $session;
         public function AllSemester()
         {
     $semester=Semester::get();
-    foreach( $semester as $sem){
-        if($sem->status==true){
-            $sem->status=1;
-        }
-        else{
-            $sem->status=0;
-        }
-    }
     return     $semester;        }
     }
     
