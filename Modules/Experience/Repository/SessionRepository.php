@@ -87,11 +87,12 @@ return $session;
         {
             $session= Session::with('drugs')->get();
     foreach( $session as $sem){
-        if($sem->experience_id->status==true){
-          $sem->experience_id->status=1;
+        if($sem['experience_id']['status']==true){
+            echo 1;
+          $sem['experience_id']['status']=1;
         }
         else{
-            $sem->experience_id->status=0;
+            $sem['experience_id']['status']=0;
         }
     }
     return     $session;   
