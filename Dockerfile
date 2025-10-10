@@ -23,7 +23,9 @@ RUN chown -R www-data:www-data /var/www/html \
 
 # تثبيت الحزم
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-
+RUN php artisan schedule:run
+RUN php artisan queue:work
+RUN php artisan storage:link
 # فتح البورت
 EXPOSE 8080
 CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
