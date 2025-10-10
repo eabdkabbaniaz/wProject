@@ -3,9 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Modules\Medication\App\Http\Controllers\MedicationController;
-use Modules\Medication\app\Http\Controllers\EffectController;
-use Modules\Medication\app\Http\Controllers\SystemController;
-use Modules\Medication\app\Http\Controllers\MedicationEffectController;
+use Modules\Medication\App\Http\Controllers\EffectController;
+use Modules\Medication\App\Http\Controllers\SystemController;
+use Modules\Medication\App\Http\Controllers\MedicationEffectController;
 
 /*
     |--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Medication\app\Http\Controllers;
+namespace Modules\Medication\App\Http\Controllers;
 
 use Modules\Medication\App\Http\Requests\StoreEffectRequest;
 use Illuminate\Routing\Controller;
