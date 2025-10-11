@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name'); 
             $table->enum('calculation_method', ['sum', 'average'])->default('average');
-            $table->double('final_mark');
+            $table->decimal('final_mark');
             $table->timestamps();
         });
     }
