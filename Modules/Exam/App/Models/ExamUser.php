@@ -19,6 +19,9 @@ class ExamUser extends Model
      */
     protected $guarded=[];
 
+protected $casts = [
+    'grade' => 'float',
+];
 
     public function user(): BelongsTo
     {

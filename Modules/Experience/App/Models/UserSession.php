@@ -14,7 +14,9 @@ class UserSession extends Model
     protected $table = 'session_users';
 
     protected $fillable = ['session_id','report', 'user_id', 'mark'];
-
+protected $casts = [
+    'mark' => 'float',
+];
     public function user()
     {
         return $this->belongsTo(User::class);

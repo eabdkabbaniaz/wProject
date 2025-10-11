@@ -10,7 +10,9 @@ use Modules\Experience\Database\factories\SessionFactory;
 class Session extends Model
 {
     use HasFactory;
-
+protected $casts = [
+    'mark' => 'float',
+];
     /**
      * The attributes that are mass assignable.
      */

@@ -16,7 +16,11 @@ class Exam extends Model
      */
     protected $guarded=[];
 
-    
+    protected $casts = [
+    'time' => 'float',
+    'Final_grade' => 'float',
+
+];
 
     public function subject()
     {
