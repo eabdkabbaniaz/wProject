@@ -1,9 +1,127 @@
+# services:
+#   - type: web
+#     name: laravel-app
+#     env: docker
+#     repo: https://github.com/YOUR-USER/YOUR-REPO
+#     branch: main
+# databases:
+#   - name: laravel-db
+#     plan: free
+
+
+
+
 services:
+  # 🌐 خدمة الويب (Laravel App)
   - type: web
     name: laravel-app
     env: docker
     repo: https://github.com/YOUR-USER/YOUR-REPO
     branch: main
+    plan: free
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://YOUR-APP-NAME.onrender.com
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: laravel-db
+          property: host
+      - key: DB_DATABASE
+        fromDatabase:
+          name: laravel-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: laravel-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: laravel-db
+          property: password
+      - key: QUEUE_CONNECTION
+        value: database
+
+  # ⚙️ خدمة العامل (Queue Worker)
+  - type: worker
+    name: laravel-queue-worker
+    env: docker
+    repo: https://github.com/YOUR-USER/YOUR-REPO
+    branch: main
+    plan: free
+    startCommand: php artisan queue:work --sleep=3 --tries=3 --timeout=90
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        sync: true
+      - key: APP_DEBUG
+        value: false
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: laravel-db
+          property: host
+      - key: DB_DATABASE
+        fromDatabase:
+          name: laravel-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: laravel-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: laravel-db
+          property: password
+      - key: QUEUE_CONNECTION
+        value: database
+
+  # ⏰ خدمة الجدولة (Scheduler)
+  - type: cron
+    name: laravel-scheduler
+    env: docker
+    repo: https://github.com/YOUR-USER/YOUR-REPO
+    branch: main
+    plan: free
+    schedule: "* * * * *" # كل دقيقة
+    command: php artisan schedule:run
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        sync: true
+      - key: APP_DEBUG
+        value: false
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: laravel-db
+          property: host
+      - key: DB_DATABASE
+        fromDatabase:
+          name: laravel-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: laravel-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: laravel-db
+          property: password
+      - key: QUEUE_CONNECTION
+        value: database
+
 databases:
   - name: laravel-db
     plan: free
