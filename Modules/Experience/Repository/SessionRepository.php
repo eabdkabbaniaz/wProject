@@ -81,7 +81,7 @@ foreach($session as $s){
             ->where('user_id', $s->id)
             ->exists();
             $s['has_attended']= $hasAttended;
-        $s->mark =(double)$s->mark;
+        $s['mark'] =(double)$s['mark'];
 
         }
 return $session;
