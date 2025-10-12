@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId( 'session_id')->constrained('sessions')->onDelete('cascade');
             $table->foreignId( 'user_id')->constrained('users')->onDelete('cascade');
             $table->decimal('mark', 5, 2)->default(0.0);
-              $table->string('report')->nullable();
+            $table->string('report')->nullable();
             $table->timestamps();
         });
     }
