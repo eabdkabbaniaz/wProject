@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId( 'experience_id')->constrained('experineces_semesters')->onDelete('cascade');
             $table->foreignId( 'teacher_id')->constrained('users')->onDelete('cascade');
             $table->integer('status')->default(1);
-            $table->numeric('mark', 5, 2)->default(0);
+            $table->decimal('mark', 5, 2)->default(0.0);
             $table->timestamps();
         });
     }

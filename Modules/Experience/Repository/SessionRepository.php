@@ -61,7 +61,12 @@ class SessionRepository
     
         public function all($data)
         {
-            return Session::with('drugs','experiences.Experience','teacher')->where('experience_id',$data)->get();
+            // return 
+                    $session= Session::with('drugs','experiences.Experience','teacher')->where('experience_id',$data)->get();
+       foreach($session as $s){
+        $s->mark =(double)$s->mark;
+       }
+    return $session;
         }
     
         public function getSession($data)
@@ -75,14 +80,21 @@ foreach($session as $s){
             ->where('session_id', $s->id)
             ->where('user_id', $s->id)
             ->exists();
-            $s['has_attended']= $hasAttended;}
+            $s['has_attended']= $hasAttended;
+        $s->mark =(double)$s->mark;
+
+        }
 return $session;
         }
     
         public function getall()
         {
-            return Session::with('drugs','experiences.Experience','teacher')->get();
-        }
+            $session= Session::with('drugs','experiences.Experience','teacher')->get();
+       foreach($session as $s){
+        $s->mark =(double)$s->mark;
+       }
+    return $session;
+    }
         public function getSessions()
         {
             $session= Session::with('drugs')->get();
