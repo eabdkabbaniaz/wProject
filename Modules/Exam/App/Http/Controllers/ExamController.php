@@ -3,7 +3,7 @@
 namespace Modules\Exam\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modules\Exam\app\Http\Requests\ExamRequest;
+use Modules\Exam\App\Http\Requests\ExamRequest;
 use Modules\Exam\App\Models\ExamQuestion;
 use Modules\Exam\App\Models\ExamSubject;
 use Modules\Exam\App\Models\Question;
