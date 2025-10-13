@@ -13,7 +13,7 @@ class SubjectRequest extends FormRequest
     {
       
             return [
-                'name' => 'required|string|max:255|unique:subjects,name,' . $this->route('subject'),
+                'name' => 'required|string|max:255',
                ];
     }
 
