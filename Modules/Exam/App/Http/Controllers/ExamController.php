@@ -115,15 +115,15 @@ $subject =ExamSubject::where('exam_id' ,$exam->id)->select('subject_id');
 
   
         $questionsWithAnswers = $examUser->questions()->with('question.answers')->get();
-foreach ($questionsWithAnswers as $s){
-foreach ($s->question as $e){
-if($e['answers']['is_correct']==true){
-$e['answers']['is_correct']=1;
-}
-else{
-    $s['answers']['is_correct']=0;
-}
-}}
+$questionsWithAnswers->transform(function ($item) {
+    if ($item->question && $item->question->answers) {
+        $item->question->answers->transform(function ($answer) {
+            $answer->is_correct = $answer->is_correct ? 1 : 0;
+            return $answer;
+        });
+    }
+    return $item;
+});
         return response()->json([
             'exam' => $exam->only(['id', 'name','time', 'Final_grade','number_of_questions']),
             'questions' => $questionsWithAnswers
