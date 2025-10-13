@@ -9,6 +9,7 @@ use Modules\Experience\App\Models\Semester;
 use Modules\Experience\App\Models\Session;
 use Modules\Student\App\Models\Category;
 use Modules\Student\App\Models\Student;
+use  Modules\Experience\App\Models\ExperienceSemester;
 use App\Models\User;
 use Modules\Student\App\Models\Teacher;
 use Illuminate\Database\Seeder;
@@ -138,38 +139,57 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Sessions for Frog Heart in Semester 1
-        $expSem = DB::table('experineces_semesters')
-            ->where('experience_id', $frogHeart->id)
-            ->where('semester_id', $semester1->id)
-            ->first();
+           $allDrugs = Drug::all();
+        $experiences = ExperienceSemester::all();
+
+        // إنشاء جلسة لكل تجربة ولكل دواء
+        foreach ($experiences as $exp) {
+            foreach ($allDrugs as $drug) {
 
         $session1 = Session::create([
-            'name' => 'Acetylcholine Session',
-            'code' => 'S1',
-            'experience_id' => $expSem->id,
+            'name' => "{$drug->name} Session",
+            'code' => strtoupper(substr($drug->name, 0, 3)) . '-' . $exp->id,
+            'experience_id' => $exp->id,
             'teacher_id' => $user5->id,
         ]);
-
-        $session2 = Session::create([
-            'name' => 'Atropine Session',
-            'code' => 'S2',
-            'experience_id' => $expSem->id,
-            'teacher_id' => $user5->id,
+     DB::table('drug_sessions')->insert([
+            ['session_id' => $session1->id, 'drug_id' => $drug->id],
         ]);
+            }
+        }
+    
+        // Sessions for Frog Heart in Semester 1
+        // $expSem = DB::table('experineces_semesters')
+        //     ->where('experience_id', $frogHeart->id)
+        //     ->where('semester_id', $semester1->id)
+        //     ->first();
 
-        $session3 = Session::create([
-            'name' => 'Acetylcholine + Atropine Session',
-            'code' => 'S3',
-            'experience_id' => $expSem->id,
-            'teacher_id' => $user5->id,
-        ]);
+        // $session1 = Session::create([
+        //     'name' => 'Acetylcholine Session',
+        //     'code' => 'S1',
+        //     'experience_id' => $expSem->id,
+        //     'teacher_id' => $user5->id,
+        // ]);
 
-        DB::table('drug_sessions')->insert([
-            ['session_id' => $session1->id, 'drug_id' => $acetylcholine->id],
-            ['session_id' => $session2->id, 'drug_id' => $atropine->id],
-            ['session_id' => $session3->id, 'drug_id' => $acetylcholine->id],
-            ['session_id' => $session3->id, 'drug_id' => $atropine->id],
-        ]);
+        // $session2 = Session::create([
+        //     'name' => 'Atropine Session',
+        //     'code' => 'S2',
+        //     'experience_id' => $expSem->id,
+        //     'teacher_id' => $user5->id,
+        // ]);
+
+        // $session3 = Session::create([
+        //     'name' => 'Acetylcholine + Atropine Session',
+        //     'code' => 'S3',
+        //     'experience_id' => $expSem->id,
+        //     'teacher_id' => $user5->id,
+        // ]);
+
+        // DB::table('drug_sessions')->insert([
+        //     ['session_id' => $session1->id, 'drug_id' => $acetylcholine->id],
+        //     ['session_id' => $session2->id, 'drug_id' => $atropine->id],
+        //     ['session_id' => $session3->id, 'drug_id' => $acetylcholine->id],
+        //     ['session_id' => $session3->id, 'drug_id' => $atropine->id],
+        // ]);
     }
 }
