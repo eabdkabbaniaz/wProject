@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Exam\app\Http\Controllers;
+namespace Modules\Exam\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Modules\Exam\App\Http\Requests\StoreQuestionRequest;

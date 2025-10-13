@@ -1,5 +1,5 @@
 <?php
-namespace  Modules\Exam\app\Http\Controllers;
+namespace  Modules\Exam\App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 // use Modules\Exam\Http\Requests\SubjectRequest;

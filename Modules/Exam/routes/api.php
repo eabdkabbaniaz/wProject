@@ -3,8 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Modules\Exam\App\Http\Controllers\ExamController;
-use Modules\Exam\app\Http\Controllers\QuestionController;
-use  Modules\Exam\app\Http\Controllers\SubjectController;
+use Modules\Exam\App\Http\Controllers\QuestionController;
+use  Modules\Exam\App\Http\Controllers\SubjectController;
 /*
     |--------------------------------------------------------------------------
     | API Routes
