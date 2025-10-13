@@ -28,10 +28,22 @@ class AuthService
         try {
             $data['device_token'] = $data->device_token;
             $data['university_number'] = $data->university_number;
-            $student = $this->repo->findByUniversity_number($data['university_number']);
-            if (!$student || !Hash::check($data->password, $student->password)) {
-                throw new Exception("الرقم الجامعي او كلمة المرور خاطئة");
-            }
+            // $student = $this->repo->findByUniversity_number($data['university_number']);
+            // if (!$student || !Hash::check($data->password, $student->password)) {
+                // throw new Exception("الرقم الجامعي او كلمة المرور خاطئة");
+            // }
+        $user =  User::create([
+            'name' => $message['university_number'],
+            'email' => $message['university_number'],
+            'password' => bcrypt(11111111),
+        ]);
+       $student= Student::create([
+            'category_id' => 1,
+            'user_id' => $user->id,
+        ]);
+        $user->assignRole('student');
+        $user['category_name']='فئة'.$student->category_id;
+
             $student['token'] = $student->createToken('my-app-token')->plainTextToken;
             $studentId = $student->id;
             DeviceToken::firstOrCreate([

@@ -8,8 +8,8 @@ use Modules\Exam\App\Models\ExamQuestion;
 use Modules\Exam\App\Models\ExamSubject;
 use Modules\Exam\App\Models\Question;
 use Modules\Exam\Services\ExamService;
-use Modules\Exam\app\Models\Exam;
-use Modules\Exam\app\Models\ExamUser;
+use Modules\Exam\App\Models\Exam;
+use Modules\Exam\App\Models\ExamUser;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
