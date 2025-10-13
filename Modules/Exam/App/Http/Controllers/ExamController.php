@@ -85,10 +85,10 @@ public function startExam( $examId)
             [ 'user_id' , $user->id],
             [ 'exam_id', $exam->id]
         ])->first();
-        if($users){
-            return response()->json(['message' => 'you can do exam one time'], 400);
+        // if($users){
+        //     return response()->json(['message' => 'you can do exam one time'], 400);
 
-        }
+        // }
   
         $examUser = ExamUser::create([
             'user_id' => $user->id,
