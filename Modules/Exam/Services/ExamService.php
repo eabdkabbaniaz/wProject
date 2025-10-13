@@ -61,7 +61,7 @@ public function updatestatus($id)
             $exam['data']['time'] = $data['time'];
             $exam['subject_id'] = $data['subject_id'];
            
-                dispatch(new SendStudentNotification($exam['data']['name']));
+                // dispatch(new SendStudentNotification($exam['data']['name']));
             
             $result = $this->examRepo->create($exam);
             return ApiResponseTrait::successResponse("succ",   $result)->original;
