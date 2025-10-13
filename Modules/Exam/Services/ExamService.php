@@ -60,7 +60,7 @@ public function updatestatus($id)
             $exam['data']['End_date'] = $data['End_date'];
             $exam['data']['time'] = $data['time'];
             $exam['subject_id'] = $data['subject_id'];
-            $exam['status'] = true;
+            $exam['data']['status'] = true;
            
                 // dispatch(new SendStudentNotification($exam['data']['name']));
             
