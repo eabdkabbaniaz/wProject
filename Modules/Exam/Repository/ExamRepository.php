@@ -42,7 +42,7 @@ public function updatestatus($id)
         $exam = $this->find($id);
           $exam->subject()->delete();
         $exam->update($data['data']);
-        $exam->update(['status',true]);
+        // $exam->update(['status',true]);
          
    foreach(   $data['subject_id'] as $subject){
             ExamSubject::create([
