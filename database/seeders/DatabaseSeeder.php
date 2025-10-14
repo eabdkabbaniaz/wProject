@@ -97,7 +97,7 @@ class DatabaseSeeder extends Seeder
         $magnesium = Drug::create(['name' => 'Magnesium']);
         $carbachol = Drug::create(['name' => 'Carbachol']);
         $pilocarpine = Drug::create(['name' => 'Pilocarpine']);
-        // $barium = Drug::create(['name' => 'Barium']);
+        $barium = Drug::create(['name' => 'Barium']);
 
         // Experience Drugs - Rabbit Intestine
         DB::table('experience_drugs')->insert([
