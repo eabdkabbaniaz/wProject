@@ -90,14 +90,14 @@ class DatabaseSeeder extends Seeder
 
         // Drugs
         $acetylcholine = Drug::create(['name' => 'Acetylcholine']);
-        $adrenaline = Drug::create(['name' => 'Adrenaline']);
+        $adrenaline = Drug::create(['name' => 'Adrenaline (Epinephrine)']);
         $atropine = Drug::create(['name' => 'Atropine']);
-        $norAdrenaline = Drug::create(['name' => 'NorAdrenaline']);
+        $norAdrenaline = Drug::create(['name' => 'Noradrenaline (Norepinephrine)']);
         $alphaBetaBlocker = Drug::create(['name' => 'Alpha Beta Blocker']);
         $magnesium = Drug::create(['name' => 'Magnesium']);
         $carbachol = Drug::create(['name' => 'Carbachol']);
         $pilocarpine = Drug::create(['name' => 'Pilocarpine']);
-        $barium = Drug::create(['name' => 'Barium']);
+        // $barium = Drug::create(['name' => 'Barium']);
 
         // Experience Drugs - Rabbit Intestine
         DB::table('experience_drugs')->insert([
