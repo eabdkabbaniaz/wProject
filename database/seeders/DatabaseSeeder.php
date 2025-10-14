@@ -76,8 +76,8 @@ class DatabaseSeeder extends Seeder
 
         // Experiences
         $frogHeart = Experience::create(['name' => 'Frog Heart Experiment']);
-        $intestine1 = Experience::create(['name' => 'Rabbit Intestine Experiment']);
-        $intestine2 = Experience::create(['name' => 'Pig Intestine Experiment']);
+        $intestine1 = Experience::create(['name' => 'Pig Intestine Experiment']);
+        $intestine2 = Experience::create(['name' => 'Rabbit Intestine Experiment']);
 
         // Attach Experiences to Semesters
         DB::table('experineces_semesters')->insert([
@@ -177,19 +177,32 @@ class DatabaseSeeder extends Seeder
         //     'experience_id' => $expSem->id,
         //     'teacher_id' => $user5->id,
         // ]);
+        foreach ($experiences as $exp) {
+        $session3 = Session::create([
+            'name' => 'Acetylcholine + Atropine Session',
+            'code' => 'S3',
+            'experience_id' => $exp->id,
+            'teacher_id' => $user5->id,
+        ]);
 
-        // $session3 = Session::create([
-        //     'name' => 'Acetylcholine + Atropine Session',
-        //     'code' => 'S3',
-        //     'experience_id' => $expSem->id,
-        //     'teacher_id' => $user5->id,
-        // ]);
+        DB::table('drug_sessions')->insert([
+            // ['session_id' => $session1->id, 'drug_id' => $acetylcholine->id],
+            // ['session_id' => $session2->id, 'drug_id' => $atropine->id],
+            ['session_id' => $session3->id, 'drug_id' => $acetylcholine->id],
+            ['session_id' => $session3->id, 'drug_id' => $atropine->id],
+        ]);
+        $session4 = Session::create([
+            'name' => 'Adrenaline + Alpha Beta Session',
+            'code' => 'S3',
+            'experience_id' => $exp->id,
+            'teacher_id' => $user5->id,
+        ]);
 
-        // DB::table('drug_sessions')->insert([
-        //     ['session_id' => $session1->id, 'drug_id' => $acetylcholine->id],
-        //     ['session_id' => $session2->id, 'drug_id' => $atropine->id],
-        //     ['session_id' => $session3->id, 'drug_id' => $acetylcholine->id],
-        //     ['session_id' => $session3->id, 'drug_id' => $atropine->id],
-        // ]);
-    }
+        DB::table('drug_sessions')->insert([
+            // ['session_id' => $session1->id, 'drug_id' => $acetylcholine->id],
+            // ['session_id' => $session2->id, 'drug_id' => $atropine->id],
+            ['session_id' => $session4->id, 'drug_id' => $adrenaline->id],
+            ['session_id' => $session4->id, 'drug_id' => $alphaBetaBlocker->id],
+        ]);
+    }}
 }
