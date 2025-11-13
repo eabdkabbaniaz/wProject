@@ -16,11 +16,13 @@ class AppServiceProvider extends ServiceProvider
       //  Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }
 
+
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
-        //
+    Schema::defaultStringLength(191); // ← يحل المشكلة في كل المشاريع المستقبلية
     }
+
 }
