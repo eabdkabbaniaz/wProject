@@ -3,26 +3,17 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Laravel\Sanctum\PersonalAccessToken;
-use Laravel\Sanctum\Sanctum;
+use Illuminate\Support\Facades\Schema; // ← هذا السطر مهم جدًا
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function boot()
     {
-      //  Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+        Schema::defaultStringLength(191); // ← يحل مشكلة طول الـ index في PostgreSQL
     }
 
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
+    public function register()
     {
-    Schema::defaultStringLength(191); // ← يحل المشكلة في كل المشاريع المستقبلية
+        //
     }
-
 }
