@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('tokenable')->nullable();
-            $table->string('name',191);
-            $table->string('token', 64);
-            $table->text('abilities',191)->nullable();
+Schema::create('personal_access_tokens', function (Blueprint $table) {
+            $table->id(); // bigIncrements أو uuid حسب رغبتك
+            $table->morphs('tokenable');     // ← ده البديل السحري
+            $table->string('name');
+            $table->string('token', 64)->unique();
+            $table->text('abilities')->nullable();
             $table->timestamp('last_used_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
